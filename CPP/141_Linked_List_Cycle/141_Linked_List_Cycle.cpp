@@ -25,20 +25,20 @@ class Solution {
 public:
     bool hasCycle(ListNode *head) {
         if(!head || !head->next) {
-		    return false;
-    	}
-	    //using fast pointer and slow pointer
-	    ListNode *fast = head;
-	    ListNode *slow = head;
+            return false;
+        }
+        //using fast pointer and slow pointer
+        ListNode *fast = head;
+        ListNode *slow = head;
 
-	    while (fast != NULL && fast->next != NULL) {
-		    fast = fast->next->next;
-		    slow =  slow->next;
-		    if (fast == slow) {
-		    	//it's a cycle list
-		    	return true;
-		    }
-    	}
-	    return false;
+        while (fast != NULL && fast->next != NULL) {
+            fast = fast->next->next;
+            slow =  slow->next;
+            if (fast == slow) {
+                //it's a cycle list
+                return true;
+            }
+        }
+        return false;
     }
 };

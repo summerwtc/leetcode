@@ -23,49 +23,49 @@ return 4->5->1->2->3->NULL.
 class Solution {
 public:
     ListNode* rotateRight(ListNode* head, int k) {
-    	if (!head || !head->next) {
-    		return head;
-    	}
+        if (!head || !head->next) {
+            return head;
+        }
 
-    	//In case that list len is smaller than k
-    	int itemNum = getListLen(head);
-    	k = k % itemNum;
+        //In case that list len is smaller than k
+        int itemNum = getListLen(head);
+        k = k % itemNum;
 
-    	//Don't need to rotate the list
-    	if (0 == k) {
-    		return head;
-    	}
+        //Don't need to rotate the list
+        if (0 == k) {
+            return head;
+        }
 
-    	ListNode *temp = NULL;
-    	ListNode *newHead = head;
+        ListNode *temp = NULL;
+        ListNode *newHead = head;
 
-    	for (int i = 0; i < itemNum - k; ++i) {
-    		temp = newHead;
-    		newHead = newHead->next;
-    	}
-	
-    	//Now newHead points to the head of new list
-    	temp->next = NULL;
-    	temp = newHead;
-    	while(temp->next){ 
-    		temp = temp->next;
-    	}
-    	temp->next = head;
+        for (int i = 0; i < itemNum - k; ++i) {
+            temp = newHead;
+            newHead = newHead->next;
+        }
+    
+        //Now newHead points to the head of new list
+        temp->next = NULL;
+        temp = newHead;
+        while(temp->next){ 
+            temp = temp->next;
+        }
+        temp->next = head;
 
-    	return newHead;
+        return newHead;
     }
     
     int  getListLen(ListNode *head)
     {
-	    if (!head) {
-		    return 0;
-	    }
+        if (!head) {
+            return 0;
+        }
 
-	    int itemNum = 0;
-	    while(head) {
-		    ++itemNum;
-		    head = head->next;
-	    }
-	    return itemNum;
+        int itemNum = 0;
+        while(head) {
+            ++itemNum;
+            head = head->next;
+        }
+        return itemNum;
     }
 };

@@ -22,64 +22,64 @@ class Solution {
 public:
     bool isPalindrome(ListNode* head) {
         if (!head || !head->next) {
-		    return true;
-	    }
+            return true;
+        }
 
-	    ListNode *middle = getMiddle(head);
-	    
-    	//middle should not be NULL
-    	ListNode *newHead = middle->next;
-	    middle->next = NULL;
+        ListNode *middle = getMiddle(head);
+        
+        //middle should not be NULL
+        ListNode *newHead = middle->next;
+        middle->next = NULL;
 
-	    //reverse the list of fast
-    	newHead = reverseList(newHead);
+        //reverse the list of fast
+        newHead = reverseList(newHead);
 
-    	while(newHead) {
-	    	if (newHead->val != head->val) {
-	    		return false;
-	    	}
-	    	newHead = newHead->next;
-	    	head = head->next;
-    	}
-    	return true;
+        while(newHead) {
+            if (newHead->val != head->val) {
+                return false;
+            }
+            newHead = newHead->next;
+            head = head->next;
+        }
+        return true;
     }
     
     //get the middle position of the list
     ListNode * getMiddle(ListNode *head)
     {
-	    if (!head || !head->next) {
-		    return head;
-	    }
-	    ListNode *fast = head;
-	    ListNode *slow = head;
-	
-	    //use fast and slow pointers
-	    while(fast->next && fast->next->next) {
-		    fast = fast->next->next;
-		    slow = slow->next;
-	    }
-	    //Now slow points to the middle of the list
-	    return slow;
+        if (!head || !head->next) {
+            return head;
+        }
+        ListNode *fast = head;
+        ListNode *slow = head;
+    
+        //use fast and slow pointers
+        while(fast->next && fast->next->next) {
+            fast = fast->next->next;
+            slow = slow->next;
+        }
+        //Now slow points to the middle of the list
+        return slow;
     }
     
     //Reverse list
     ListNode* reverseList(ListNode* head) {
-       	if (!head || !head->next) {
-	    	return head;
-	    }
-	    //using three pointer, prev points to previous node,
-	    //curr points to the current node, and next points to next node
-	    ListNode *prev = NULL;
-	    ListNode *curr = head;
-    	ListNode *next = NULL;
-	    while(curr->next) {
-	    	next = curr->next;
-	    	curr->next = prev;
-		    prev= curr;
-		    curr = next;
-	    }
-    	//reset the value of curr->next
-    	curr->next = prev;
-	    return curr; 
+           if (!head || !head->next) {
+            return head;
+        }
+        //using three pointer, prev points to previous node,
+        //curr points to the current node, and next points to next node
+        ListNode *prev = NULL;
+        ListNode *curr = head;
+        ListNode *next = NULL;
+        while(curr->next) {
+            next = curr->next;
+            curr->next = prev;
+            prev= curr;
+            curr = next;
+        }
+        //reset the value of curr->next
+        curr->next = prev;
+        return curr; 
     }
 };

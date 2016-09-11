@@ -28,22 +28,22 @@ class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
         if (!head) {
-		    return head;
-	    }
+            return head;
+        }
 
-	    ListNode *curr = head;
-	    ListNode *next = head->next;
-	    while (next) {
-		    //compare two values for equality, if they are equal, delete the latter
-		    if (next->val == curr->val) {
-			    curr->next = next->next;
-			    delete next;
-			    next = curr->next;
-		    } else {
-			    curr = curr->next;
-			    next = curr->next;
-		    }
-	    }
-	    return head;
+        ListNode *curr = head;
+        ListNode *next = head->next;
+        while (next) {
+            //compare two values for equality, if they are equal, delete the latter
+            if (next->val == curr->val) {
+                curr->next = next->next;
+                delete next;
+                next = curr->next;
+            } else {
+                curr = curr->next;
+                next = curr->next;
+            }
+        }
+        return head;
     }
 };

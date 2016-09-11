@@ -33,24 +33,24 @@ The first node is considered odd, the second node even and so on ...
 class Solution {
 public:
     ListNode* oddEvenList(ListNode* head) {
-    	if (!head || !head->next) {
-	    	return head;
-	    }
+        if (!head || !head->next) {
+            return head;
+        }
 
-	    ListNode *odd = head;
-	    ListNode *evenHead = head->next;
-	    ListNode *even= evenHead;
+        ListNode *odd = head;
+        ListNode *evenHead = head->next;
+        ListNode *even= evenHead;
 
-	    //even points to even node, and even->next points to odd node
-	    while(even && even->next) {
-		    odd->next = even->next;
-		    even->next = even->next->next;
-		    odd = odd->next;
-		    even = even->next;
-	    }
+        //even points to even node, and even->next points to odd node
+        while(even && even->next) {
+            odd->next = even->next;
+            even->next = even->next->next;
+            odd = odd->next;
+            even = even->next;
+        }
 
-	    //merge the two lists
-	    odd->next = evenHead;
-	    return head;
+        //merge the two lists
+        odd->next = evenHead;
+        return head;
     }
 };

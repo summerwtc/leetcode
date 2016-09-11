@@ -26,38 +26,38 @@ class Solution {
 public:
     ListNode* removeElements(ListNode* head, int val) {
         if (!head) {
-		    return head;
-	    }
-	    ListNode *prev = NULL;
-	    ListNode *curr = NULL;
+            return head;
+        }
+        ListNode *prev = NULL;
+        ListNode *curr = NULL;
 
-	    //find the first node whose val is not equal to val 
-	    while(head) {
-		    if (head->val == val) {
-			    prev = head;
-			    head = head->next;
-			    delete prev;
-		    } else {
-			    break;
-		    }
-	    }
-	    if (!head) {
-		    return NULL;
-	    }
-	    //now head->val != val
-	    prev = head;
-	    curr = head->next;
-	    while(curr) {
-		    if(curr->val == val) {
-			    prev->next = curr->next;
-			    delete curr;
-			    curr = prev->next;
-		    }
-		    else {
-			    prev = curr;
-			    curr = curr->next;
-		    }
-	    }
-	    return head;
+        //find the first node whose val is not equal to val 
+        while(head) {
+            if (head->val == val) {
+                prev = head;
+                head = head->next;
+                delete prev;
+            } else {
+                break;
+            }
+        }
+        if (!head) {
+            return NULL;
+        }
+        //now head->val != val
+        prev = head;
+        curr = head->next;
+        while(curr) {
+            if(curr->val == val) {
+                prev->next = curr->next;
+                delete curr;
+                curr = prev->next;
+            }
+            else {
+                prev = curr;
+                curr = curr->next;
+            }
+        }
+        return head;
     }
 };

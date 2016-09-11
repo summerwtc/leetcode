@@ -32,39 +32,39 @@ class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
         if (n < 0) {
-		    return NULL;
-	    }
-	    if (!head || 0 == n ) {
-		    return head;
-	    }
-		
-		//using fast and slow pointers, the fast points to the last node,
-		//and slow->next point to the Nth Node
-	    ListNode *fast = head;
-	    ListNode *slow = head;
+            return NULL;
+        }
+        if (!head || 0 == n ) {
+            return head;
+        }
+        
+        //using fast and slow pointers, the fast points to the last node,
+        //and slow->next point to the Nth Node
+        ListNode *fast = head;
+        ListNode *slow = head;
 
-	    while (n-- && (fast)) {
-		    fast = fast->next;
-	    }
+        while (n-- && (fast)) {
+            fast = fast->next;
+        }
 
-	    //if fast is NULL, the head should be delete
-	    if (!fast) {
-		    head = head->next;
-		    delete slow;
-		    slow = NULL;
-		    return head;
-	    }
+        //if fast is NULL, the head should be delete
+        if (!fast) {
+            head = head->next;
+            delete slow;
+            slow = NULL;
+            return head;
+        }
 
-	    while(fast->next) {
-		    fast = fast->next;
-		    slow = slow->next;
-	    }
-	    //the Nth node is slow->next, and delete it
-	    fast = slow->next;
-	    slow->next = slow->next->next;
-	    delete fast;
-	    fast = NULL;
+        while(fast->next) {
+            fast = fast->next;
+            slow = slow->next;
+        }
+        //the Nth node is slow->next, and delete it
+        fast = slow->next;
+        slow->next = slow->next->next;
+        delete fast;
+        fast = NULL;
 
-	    return head;
+        return head;
     }
 };

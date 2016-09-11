@@ -37,46 +37,46 @@ class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
         if (!headA || !headB) {
-		    return NULL;
-	    }
+            return NULL;
+        }
 
-	    int lenA = getListLen(headA);
-	    int lenB = getListLen(headB);
-	    ListNode *currA = headA;
-	    ListNode *currB = headB;
+        int lenA = getListLen(headA);
+        int lenB = getListLen(headB);
+        ListNode *currA = headA;
+        ListNode *currB = headB;
 
-	    if (lenA > lenB) {
-		    for(int i = 0; i < lenA-lenB; ++i) {
-			    currA = currA->next;
-		    }
-	    } else {
-		    for (int i = 0; i < lenB - lenA; ++i) {
-			    currB = currB->next;
-		    }
-	    }
+        if (lenA > lenB) {
+            for(int i = 0; i < lenA-lenB; ++i) {
+                currA = currA->next;
+            }
+        } else {
+            for (int i = 0; i < lenB - lenA; ++i) {
+                currB = currB->next;
+            }
+        }
 
-	    while(currA) {
-		    if (currA->val != currB->val) {
-			    currA = currA->next;
-			    currB = currB->next;
-		    } else {
-			    return currA;
-		    }
-	    }
-	    return NULL;
+        while(currA) {
+            if (currA->val != currB->val) {
+                currA = currA->next;
+                currB = currB->next;
+            } else {
+                return currA;
+            }
+        }
+        return NULL;
     }
     
     //get List len
     int getListLen(ListNode *head)
     {
-	    if (!head) {
-	    	return 0;
-	    }
-    	int itemNum = 0;
-    	while(head) {
-	    	++itemNum;
-	    	head = head->next;
-	    }
-	    return itemNum;
+        if (!head) {
+            return 0;
+        }
+        int itemNum = 0;
+        while(head) {
+            ++itemNum;
+            head = head->next;
+        }
+        return itemNum;
     }
 };

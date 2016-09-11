@@ -27,25 +27,25 @@ class Solution {
 public:
     ListNode* swapPairs(ListNode* head) {
         if (!head || !head->next) {
-		    return head;
-	    }
+            return head;
+        }
 
-	    //swap the val of every two adjacent nodes
-	    ListNode *curr = head;
-	    ListNode *next = NULL;
-	    int tempVal = 0;
+        //swap the val of every two adjacent nodes
+        ListNode *curr = head;
+        ListNode *next = NULL;
+        int tempVal = 0;
 
-	    while(curr && curr->next) {
-		    next = curr->next;
+        while(curr && curr->next) {
+            next = curr->next;
 
-		    //swap the two value: next->val and curr->val
-		    tempVal = curr->val;
-		    curr->val = next->val;
-		    next->val = tempVal;
+            //swap the two value: next->val and curr->val
+            tempVal = curr->val;
+            curr->val = next->val;
+            next->val = tempVal;
 
-		    //update curr
-		    curr = curr->next->next;
-	    }
-	    return head;
+            //update curr
+            curr = curr->next->next;
+        }
+        return head;
     }
 };

@@ -27,28 +27,28 @@ class Solution {
 public:
     ListNode *detectCycle(ListNode *head) {
         if (!head || !head->next) {
-		return NULL;
-	    }
+        return NULL;
+        }
 
-    	//using fast pointer ans slow pointer
-    	ListNode *fast = head;
-	    ListNode *slow = head;
+        //using fast pointer ans slow pointer
+        ListNode *fast = head;
+        ListNode *slow = head;
 
-    	while(fast && fast->next) {
-    		fast = fast->next->next;
-	    	slow = slow->next;
-	    	if (fast == slow) {
-	    		//It has cycle, Now fast pointer points to head
-	    		fast = head;
-	    		while (fast != slow) {
-	    			fast = fast->next;
-	    			slow = slow->next;
-	    		}
-	    		//Now fast and slow are both pointing to the node where the cycle begins 
-	    		return slow;
-	    	}
-    	}
-    	//there is no cycle in this list
-	    return NULL;
+        while(fast && fast->next) {
+            fast = fast->next->next;
+            slow = slow->next;
+            if (fast == slow) {
+                //It has cycle, Now fast pointer points to head
+                fast = head;
+                while (fast != slow) {
+                    fast = fast->next;
+                    slow = slow->next;
+                }
+                //Now fast and slow are both pointing to the node where the cycle begins 
+                return slow;
+            }
+        }
+        //there is no cycle in this list
+        return NULL;
     }
 };

@@ -25,11 +25,11 @@ the linked list should become 1 -> 2 -> 4 after calling your function.
 class Solution {
 public:
     void deleteNode(ListNode* node) {
-	    //Because the node is not the tail, node->next should not be NULL
-	    ListNode *temp = node->next;  
-	    node->val = temp->val;
-	    node->next = temp->next;
-	    delete temp;
-	    temp = NULL;
+        //Because the node is not the tail, node->next should not be NULL
+        ListNode *temp = node->next;  
+        node->val = temp->val;
+        node->next = temp->next;
+        delete temp;
+        temp = NULL;
     }
 };
