@@ -21,6 +21,9 @@ click to show more hints.
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
+
+//method one:
+
 class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
@@ -41,5 +44,28 @@ public:
         //reset the value of curr->next
         curr->next = prev;
         return curr;
+    }
+};
+
+
+//method two:
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        if (!head) {
+            return head;
+        }
+    
+        ListNode *temp = NULL;
+        ListNode *newHead = NULL;
+    
+        //insert node before head
+        while (head) {
+            temp = head->next;
+            head->next = newHead;
+            newHead = head;
+            head = temp;
+        }
+        return newHead;
     }
 };
