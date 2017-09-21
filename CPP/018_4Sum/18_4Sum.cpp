@@ -45,7 +45,7 @@ public:
     vector<vector<int>> threeSum(vector<int> &sorted_nums, int low, int high, int target)
     {
         vector<vector<int>> answer;
-        //Make sure sorted_nums is sroted from lowest to highest
+        //Make sure sorted_nums is sroted in ascending order
 
         for (int index = low; index < high - 1; ) {
             int start = index + 1; 
